@@ -495,26 +495,28 @@ function install_ycm()
     version=2
     if [[ $version == "2" ]]; then
         echo "Compile ycm with python2."
+        sed -i "271ilet g:ycm_server_python_interpreter = '/usr/bin/python2.7'" ~/.vimrc
+        python2.7 ./install.py --clang-completer
         # alpine 忽略 --clang-completer 并将 let g:ycm_clangd_binary_path 注入 .vimrc
-        {
-            if [ ${distro} == "Alpine" ]; then
-                echo "##########################################"
-                echo "Apline Build, need without GLIBC."
-                echo "##########################################"
-                sed -i "273ilet g:ycm_clangd_binary_path='/usr/bin/clang'" ~/.vimrc
-                python2.7 ./install.py
-                return
-            fi
-        } || {
-            sed -i "271ilet g:ycm_server_python_interpreter = '/usr/bin/python2.7'" ~/.vimrc
-            python2.7 ./install.py --clang-completer
-        } || {
-            echo "##########################################"
-            echo "Build error, trying rebuild without Clang."
-            echo "##########################################"
-            sed -i "271ilet g:ycm_server_python_interpreter = '/usr/bin/python2.7'" ~/.vimrc
-            python2.7 ./install.py
-        }
+        #{
+        #    if [ ${distro} == "Alpine" ]; then
+        #        echo "##########################################"
+        #        echo "Apline Build, need without GLIBC."
+        #        echo "##########################################"
+        #        sed -i "273ilet g:ycm_clangd_binary_path='/usr/bin/clang'" ~/.vimrc
+        #        python2.7 ./install.py
+        #        return
+        #    fi
+        #} || {
+        #    sed -i "271ilet g:ycm_server_python_interpreter = '/usr/bin/python2.7'" ~/.vimrc
+        #    python2.7 ./install.py --clang-completer
+        #} || {
+        #    echo "##########################################"
+        #    echo "Build error, trying rebuild without Clang."
+        #    echo "##########################################"
+        #    sed -i "271ilet g:ycm_server_python_interpreter = '/usr/bin/python2.7'" ~/.vimrc
+        #    python2.7 ./install.py
+        #}
     #else
        ## echo "Compile ycm with python3."
        # {
