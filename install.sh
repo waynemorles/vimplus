@@ -515,7 +515,7 @@ function install_ycm()
             sed -i "271ilet g:ycm_server_python_interpreter = '/usr/bin/python2.7'" ~/.vimrc
             python2.7 ./install.py
         }
-    else
+    #else
        ## echo "Compile ycm with python3."
        # {
        #     # alpine 跳过该步骤
