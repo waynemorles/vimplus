@@ -516,25 +516,25 @@ function install_ycm()
             python2.7 ./install.py
         }
     else
-        echo "Compile ycm with python3."
-        {
-            # alpine 跳过该步骤
-            if [ ${distro} == "Alpine" ]; then
-                echo "##########################################"
-                echo "Apline Build, need without GLIBC."
-                echo "##########################################"
-                sed -i "273ilet g:ycm_clangd_binary_path='/usr/bin/clang'" ~/.vimrc
-                python3 ./install.py
-                return
-            fi
-        } || {
-            python3 ./install.py --clang-completer
-        } || {
-            echo "##########################################"
-            echo "Build error, trying rebuild without Clang."
-            echo "##########################################"
-            python3 ./install.py
-        }
+       ## echo "Compile ycm with python3."
+       # {
+       #     # alpine 跳过该步骤
+       #     if [ ${distro} == "Alpine" ]; then
+       #         echo "##########################################"
+       #         echo "Apline Build, need without GLIBC."
+       #         echo "##########################################"
+       #         sed -i "273ilet g:ycm_clangd_binary_path='/usr/bin/clang'" ~/.vimrc
+       #         python3 ./install.py
+       #         return
+       #     fi
+       # } || {
+       #     python3 ./install.py --clang-completer
+       # } || {
+       #     echo "##########################################"
+       #     echo "Build error, trying rebuild without Clang."
+       #     echo "##########################################"
+       #     python3 ./install.py
+       # }
     fi
 }
 
