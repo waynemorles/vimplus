@@ -492,7 +492,7 @@ function install_ycm()
     cd ~/.vim/plugged/YouCompleteMe
     distro=`get_linux_distro`
     #read -p "Please choose to compile ycm with python2 or python3, if there is a problem with the current selection, please choose another one. [2/3] " version
-    version=3
+    version=2
     if [[ $version == "2" ]]; then
         echo "Compile ycm with python2."
         # alpine 忽略 --clang-completer 并将 let g:ycm_clangd_binary_path 注入 .vimrc
