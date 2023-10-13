@@ -506,11 +506,13 @@ function install_ycm()
                 return
             fi
         } || {
+            sed -i "271ilet g:ycm_server_python_interpreter = '/usr/bin/python2.7'" ~/.vimrc
             python2.7 ./install.py --clang-completer
         } || {
             echo "##########################################"
             echo "Build error, trying rebuild without Clang."
             echo "##########################################"
+            sed -i "271ilet g:ycm_server_python_interpreter = '/usr/bin/python2.7'" ~/.vimrc
             python2.7 ./install.py
         }
     else
