@@ -493,7 +493,7 @@ function install_ycm()
     echo "Compile ycm with python3."
     git submodule update --init --recursive
     sed -i "271ilet g:ycm_server_python_interpreter = '/usr/bin/python3'" ~/.vimrc
-    python3 ./install.py --clangd-completer
+    python3 ./install.py --clangd-completer --force-sudo
 }
 
 # 在android上安装ycm插件
