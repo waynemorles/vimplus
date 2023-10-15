@@ -491,6 +491,7 @@ function install_ycm()
 
     cd ~/.vim/plugged/YouCompleteMe
     echo "Compile ycm with python3."
+    git submodule update --init --recursive
     sed -i "271ilet g:ycm_server_python_interpreter = '/usr/bin/python3'" ~/.vimrc
     python3 ./install.py --clangd-completer
 }
