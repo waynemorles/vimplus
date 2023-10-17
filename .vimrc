@@ -160,6 +160,7 @@ Plug 'Shougo/echodoc.vim'
 Plug 'terryma/vim-smooth-scroll'
 Plug 'rhysd/clever-f.vim'
 Plug 'vim-scripts/indentpython.vim'
+Plug 'puremourning/vimspector'
 
 " 加载自定义插件
 if filereadable(expand($HOME . '/.vimrc.custom.plugins'))
@@ -353,6 +354,10 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 nnoremap <leader>g :GV<cr>
 nnoremap <leader>G :GV!<cr>
 nnoremap <leader>gg :GV?<cr>
+
+" vimspector
+let g:vimspector_enable_mappings = 'HUMAN'
+let g:vimspector_configurations=~/.vimplus/.vimspector.json
 
 " 加载自定义配置
 if filereadable(expand($HOME . '/.vimrc.custom.config'))

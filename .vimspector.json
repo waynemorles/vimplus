@@ -1,0 +1,51 @@
+{
+    "configurations": {
+        "linux-qemu-amd64": {
+            "adapter": "vscode-cpptools",
+            "variables": {
+                "kernelImage": "bzImage",
+                "kernelGDB": "/usr/local/bin/riscv64-unknown-elf-gdb"
+            },
+            "configuration": {
+                "type":    "cppdbg",
+                "request": "launch",
+                "program": "${kernelBin}",
+                "cwd": "${workspaceRoot}",
+                "environment": [],
+                "externalConsole": true,
+                "stopAtEntry": true,
+                "MIMode": "gdb",
+                "miDebuggerPath": "${kernelGDB}",
+                "setupCommands": [
+                    {
+                        "description": "Connect gdbserver within qemu",
+                        "text": "target remote 127.0.0.1:1234",
+                        "ignoreFailures": false
+                    }
+                ]
+            }
+        },
+        "debug-project": {
+            "adapter": "vscode-cpptools",
+            "configuration": {
+                "variables": {
+                },
+                "type":    "cppdbg",
+                "request": "launch",
+                "program": "${workspaceRoot}/${ProgramName}",
+                "args": ["*${ProgramArgs}"],
+                "cwd": "${workspaceRoot}",
+                "environment": [],
+                "externalConsole": true,
+                "stopAtEntry": true,
+                "MIMode": "gdb",
+                "breakpointers": {
+                    "exception": {
+                        "cpp_throw": "Y",
+                        "cpp_catch": "N"
+                    }
+                }
+            }
+        }
+    }
+}

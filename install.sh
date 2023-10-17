@@ -496,6 +496,16 @@ function install_ycm()
     python3 ./install.py --clangd-completer --force-sudo
 }
 
+# 安装vimspector插件
+function install_vimsepctor()
+{
+    git clone https://github.com/waynemorles/vimspector.git ~/.vim/plugged/vimspector
+
+    cd ~/.vim/plugged/vimspector
+    echo "Compile vimspector with python3."
+    python3 install_gadget.py --enable-c --enable-cpp
+}
+
 # 在android上安装ycm插件
 function install_ycm_on_android()
 {
@@ -541,6 +551,7 @@ function install_vimplus_on_mac()
     copy_files
     install_fonts_on_mac
     install_ycm
+    install_vimsepctor
     install_vim_plugin
     print_logo
 }
@@ -571,6 +582,7 @@ function begin_install_vimplus()
     copy_files
     install_fonts_on_linux
     install_ycm
+    install_vimsepctor
     install_vim_plugin
     print_logo
 }
