@@ -357,7 +357,10 @@ nnoremap <leader>gg :GV?<cr>
 
 " vimspector
 let g:vimspector_enable_mappings = 'HUMAN'
-let g:vimspector_configurations=~/.vimplus/.vimspector.json
+
+" ctags
+set tags=.tags;
+nnoremap <leader>c :ctags -R -f .tags
 
 " 加载自定义配置
 if filereadable(expand($HOME . '/.vimrc.custom.config'))

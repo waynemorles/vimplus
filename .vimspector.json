@@ -1,6 +1,6 @@
 {
     "configurations": {
-        "linux-qemu-amd64": {
+        "linux-bzImage-cross-arch": {
             "adapter": "vscode-cpptools",
             "variables": {
                 "kernelImage": "bzImage",
@@ -23,6 +23,31 @@
                         "ignoreFailures": false
                     }
                 ]
+            }
+        },
+        "linux-qemu-cross-arch": {
+            "adapter": "vscode-cpptools",
+            "variables": {
+                "PreRun": { 
+                    "shell": "nohup /usr/bin/qemu-x86_64 -R ${ReserveSize} -g 1234 ${workspaceRoot}/${ProgramName} > /dev/null 1>${workspaceRoot}/.debug.log 2>${workspaceRoot}/.debug_err.log &",
+                    "detach": true
+                }
+            },
+            "configuration": {
+                "type":    "cppdbg",
+                "request": "launch",
+                "targetArchitecture": "x86_64",
+                "program": "${workspaceRoot}/${ProgramName}",
+                "miDebuggerServerAddress": "127.0.0.1:1234",
+                "cwd": "${workspaceRoot}",
+                "environment": [],
+                "externalConsole": false,
+                "stopAtEntry": true,
+                "MIMode": "gdb",
+                "miDebuggerPath": "/usr/bin/gdb",
+                "logging": {
+                    "engineLogging": true
+                }
             }
         },
         "debug-project": {
